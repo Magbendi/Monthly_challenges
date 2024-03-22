@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
-
+from django.template.loader import render_to_string
 
 monthly_challenge = {
     "january": "Start a daily journal to reflect on your thoughts and experiences.",
@@ -42,6 +42,6 @@ def monthly_challenges(request, m):
             "month_name":m
         })
     except:
-        return HttpResponseNotFound("<h1>This is not avaliable!</h1>")
+        raise Http404("base.html")
     
 # Create your views here.
