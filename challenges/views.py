@@ -37,11 +37,11 @@ def monthly_challenge_by_number(request, m):
 def monthly_challenges(request, m):
     try:
         challenge_text = monthly_challenge[m]
-        return render(request,"challenges/challenge.html", {
+        return render(request, "challenges/challenge.html", {
             "text": challenge_text,
-            "month_name":m
+            "month_name": m
         })
-    except:
-        raise Http404("base.html")
-    
+    except KeyError:
+        raise Http404()
+
 # Create your views here.
